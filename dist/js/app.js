@@ -186,12 +186,12 @@ $(function () {
   }
 
   //Activate Bootstrap tooltip
-  if (o.enableBSToppltip) {
-    $('body').tooltip({
-      selector: o.BSTooltipSelector,
-      container: 'body'
-    });
-  }
+  // if (o.enableBSToppltip) {
+  //   $('body').tooltip({
+  //     selector: o.BSTooltipSelector,
+  //     container: 'body'
+  //   });
+  // }
 
   //Activate box widget
   if (o.enableBoxWidget) {

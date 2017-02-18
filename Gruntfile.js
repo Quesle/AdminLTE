@@ -75,6 +75,55 @@ module.exports = function (grunt) {
         }
       }
     },
+    connect: {
+      options: {
+        port: 9000,
+        // Change this to '0.0.0.0' to access the server from outside.
+        hostname: 'localhost',
+        livereload: 35730
+      },
+      livereload: {
+        options: {
+          open: true,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect().use(
+                '/app/styles',
+                connect.static('./app/styles')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      test: {
+        options: {
+          port: 9001,
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect.static('test'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
+        }
+      },
+      dist: {
+        options: {
+          open: true,
+          base: '<%= yeoman.dist %>'
+        }
+      }
+    }
     // Uglify task info. Compress the js files.
     uglify: {
       options: {
@@ -181,4 +230,10 @@ module.exports = function (grunt) {
 
   // The default task (running "grunt" in console) is "watch"
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+
+    grunt.task.run([
+      'connect:livereload'
+    ]);
+  });
 };

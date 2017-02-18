@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" type="text/css" href="dist/lib/lib.common.min.css"> -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <title>AdminLTE with Angular</title>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+  <div class="wrapper" ng-controller="IndexController as indexCtrl">
+    <ui-view name="header"></ui-view>
+    <ui-view name="aside"></ui-view>
+    <div class="content-wrapper"></div>
+    <ui-view name="footer"></ui-view>
+    <ui-view name="aside_next"></ui-view>
+  </div>
+
+  <script type="text/javascript" src="dist/lib/lib.common.min.js"></script>
+  <script src="../dist/js/app.js"></script>
+  <script data-main="main.min.js" src="dist/lib/require.min.js"></script>
+</body>
+</html>
