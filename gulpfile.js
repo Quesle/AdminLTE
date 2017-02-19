@@ -31,6 +31,10 @@ var mainJs = [
   'app/library/main.js'
 ];
 
+var frameworks = [
+  'app/framework/**/*.js'
+];
+
 var require = [
   'bower_components/requirejs/require.js'
 ];
@@ -44,11 +48,19 @@ gulp.task('require', function() {
   return minJs('require.min.js', 'app/dist/lib', require);
 });
 
+gulp.task('framework', function() {
+  return minJs('framework.min.js', 'app/dist/lib', frameworks);
+});
+
 gulp.task('watch-require-main', function() {
   gulp.watch(mainJs, [ 'require-main' ]);
 });
 
-gulp.task('watch', [ 'watch-require-main' ]);
+gulp.task('watch-framework', function() {
+  gulp.watch(frameworks, [ 'framework' ]);
+})
+
+gulp.task('watch', [ 'watch-require-main', 'watch-framework' ]);
 
 gulp.task('build', [ 'require-main' ]);
 

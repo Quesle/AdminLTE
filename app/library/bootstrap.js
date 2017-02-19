@@ -7,7 +7,7 @@
  * https://github.com/requirejs/requirejs/issues/398
  */
 
-define('bootstrap', ['domReady', 'angular-package', 'app', 'ngRoute'], function (domReady){
+define('bootstrap', ['domReady', 'angular-package', 'app', 'ngRoute', 'framework'], function (domReady){
   'use strict';
 
   // require(['domReady!'], function (document) {
