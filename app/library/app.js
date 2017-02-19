@@ -106,37 +106,6 @@ define('app', [
       ]
     });
   }])
-  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    console.log('ssssssssss');
-    $stateProvider
-    // This is home state, will show _header.html, _footer.html
-    // And main html
-    .state('main', {
-      url:'/',
-      views: {
-        header: {
-          templateUrl: 'common/_header.html'
-        },
-        aside: {
-          templateUrl: 'common/_aside.html'
-        },
-        asideNext: {
-          templateUrl: 'common/_aside_next.html'
-        },
-        main: {
-          templateUrl: 'common/_container.html'
-        },
-        footer: {
-          templateUrl: 'common/_footer.html'
-        }
-      }
-    });
-
-    $urlRouterProvider
-      .when('/main.dashboard.index', '/dashboard/index')
-      .when('/main', '/dashboard/index')
-      .otherwise('main.dashboard.index');
-  }])
   .factory('breadcrumb', ['$rootScope', function($rootScope) {
     return function(subTitle, breadcrumbs) {
       $rootScope.$broadcast(

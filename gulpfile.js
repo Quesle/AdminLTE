@@ -24,7 +24,7 @@ function minJs(filename, dir, files) {
 }
 
 var mainJs = [
-  'bower_components/domReady/domReady.js',
+  'app/library/domReady.js',
   'app/library/bootstrap.js',
   'app/library/app.js',
   'app/library/ngRoute.js',
