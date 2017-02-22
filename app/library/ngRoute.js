@@ -94,7 +94,12 @@ define('ngRoute', ['app'], function (app) {
     getRouter([ 'example', 'pace' ], 'pace', 'Pace')
   ];
 
+  var authRouter = [
+    getRouter([ 'auth', 'login' ], 'login', 'Login')
+  ];
+
   var routes = [
+    authRouter,
     dashboardRouter,
     widgetRouter,
     uiRouter,
@@ -140,6 +145,10 @@ define('ngRoute', ['app'], function (app) {
   }, {
     url: 'example',
     title: 'Example',
+    templateUrl: templatePath
+  }, {
+    url: 'auth',
+    title: 'Auth',
     templateUrl: templatePath
   }];
 

@@ -81,7 +81,8 @@ define('app', [
   .run(['$rootScope', '$location', function () {
     // $rootScope.$on('$stateChangeStart',
     //   function (event, toState, toParams, fromState, fromParams){
-    //     console.log('StateChange', event, toState, toParams, fromState, fromParams);
+    //     // console.log('StateChange', event, toState, toParams, fromState, fromParams);
+    //     console.log(toState);
     //   }
     // );
   }])
@@ -114,39 +115,29 @@ define('app', [
       );
     };
   }])
-  .controller('IndexController', ['$scope', '$rootScope', function ($scope, $rootScope) {
-    // $scope.staticUrl = config.staticUrl;
-    // var self = this;
-    // self.currentInfo = {};
-    //
-    // // Authorzation
-    // self.supportDocEdit = false;
-    // self.supportTypeEdit = false;
-    // self.userImg = $scope.staticUrl + '/static/images/user.png';
-    //
-    // // Set the header title in nav.
-    // $scope.$on('onHeaderTitle', function(event, toState) {
-    //   self.title = toState.title;
-    // });
-    //
-    // // Set the breadcrumb
-    // $scope.$on('onBreadcrumb', function(event, toState) {
-    //   self.currentInfo.breadcrumbs = toState.breadcrumbs;
-    //   self.currentInfo.subTitle = toState.subTitle;
-    //   var needBreadcrumb = (self.currentInfo.subTitle !== undefined && self.currentInfo.subTitle !== '');
-    //   self.currentInfo.needBreadCrumb = needBreadcrumb;
-    // });
-    //
-    // $scope.$on('ocLazyLoad.moduleLoaded', function(e, module) {
-    //   console.log('module loaded', module);
-    // });
-    // // Refer http://www.tuicool.com/articles/3Mbi2y6
-    // // Refer http://www.jb51.net/article/77813.htm
-    // // Refer https://oclazyload.readme.io/docs/oclazyloadprovider
-    //
-    //
-    // // On locationChange
-    // $rootScope.$on('$locationChangeStart', function() {});
+  .controller('IndexController', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
+    var self = this;
+    self.parent = '';
+    self.subject = '';
+    $rootScope.$on('$stateChangeStart',
+      function (event, toState, toParams, fromState, fromParams){
+        var name = toState.name;
+        var options = name.split('.');
+        if (options.length === 2) {
+          self.parent = options[1];
+        } else if (options.length >= 3) {
+          self.parent = options[1];
+          self.subject = options[2];
+        } else {
+          self.parent = 'dashboard';
+          self.subject = 'v1';
+        }
+        if (name !== 'main.auth.login') {
+          event.preventDefault();
+          $state.go('main.auth.login', {});
+        }
+      }, $scope
+    );
   }]);
 
   return app;

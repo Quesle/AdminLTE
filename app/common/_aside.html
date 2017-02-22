@@ -25,7 +25,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      <li class="active treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent==='dashboard'}">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
@@ -33,8 +33,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a ui-sref="main.dashboard.v1"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-          <li><a ui-sref="main.dashboard.v2"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+          <li ng-class="{active: indexCtrl.subject==='v1'}"><a ui-sref="main.dashboard.v1"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+          <li ng-class="{active: indexCtrl.subject==='v2'}"><a ui-sref="main.dashboard.v2"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
         </ul>
       </li>
       <!--
@@ -63,7 +63,7 @@
           </span>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent === 'charts'}">
         <a href="#">
           <i class="fa fa-pie-chart"></i>
           <span>Charts</span>
@@ -72,13 +72,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a ui-sref="main.charts.chartjs"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a ui-sref="main.charts.morris"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a ui-sref="main.charts.flot"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a ui-sref="main.charts.inline"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li ng-class="{active: indexCtrl.subject==='chartjs'}"><a ui-sref="main.charts.chartjs"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+          <li ng-class="{active: indexCtrl.subject==='morris'}"><a ui-sref="main.charts.morris"><i class="fa fa-circle-o"></i> Morris</a></li>
+          <li ng-class="{active: indexCtrl.subject==='flot'}"><a ui-sref="main.charts.flot"><i class="fa fa-circle-o"></i> Flot</a></li>
+          <li ng-class="{active: indexCtrl.subject==='inline'}"><a ui-sref="main.charts.inline"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent === 'ui'}">
         <a ui-sref="main.ui.general">
           <i class="fa fa-laptop"></i>
           <span>UI Elements</span>
@@ -87,15 +87,15 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a ui-sref="main.ui.general"><i class="fa fa-circle-o"></i> General</a></li>
-          <li><a ui-sref="main.ui.icons"><i class="fa fa-circle-o"></i> Icons</a></li>
-          <li><a ui-sref="main.ui.buttons"><i class="fa fa-circle-o"></i> Buttons</a></li>
-          <li><a ui-sref="main.ui.sliders"><i class="fa fa-circle-o"></i> Sliders</a></li>
-          <li><a ui-sref="main.ui.timeline"><i class="fa fa-circle-o"></i> Timeline</a></li>
-          <li><a ui-sref="main.ui.modals"><i class="fa fa-circle-o"></i> Modals</a></li>
+          <li ng-class="{active: indexCtrl.subject==='general'}"><a ui-sref="main.ui.general"><i class="fa fa-circle-o"></i> General</a></li>
+          <li ng-class="{active: indexCtrl.subject==='icons'}"><a ui-sref="main.ui.icons"><i class="fa fa-circle-o"></i> Icons</a></li>
+          <li ng-class="{active: indexCtrl.subject==='buttons'}"><a ui-sref="main.ui.buttons"><i class="fa fa-circle-o"></i> Buttons</a></li>
+          <li ng-class="{active: indexCtrl.subject==='sliders'}"><a ui-sref="main.ui.sliders"><i class="fa fa-circle-o"></i> Sliders</a></li>
+          <li ng-class="{active: indexCtrl.subject==='timeline'}"><a ui-sref="main.ui.timeline"><i class="fa fa-circle-o"></i> Timeline</a></li>
+          <li ng-class="{active: indexCtrl.subject==='modals'}"><a ui-sref="main.ui.modals"><i class="fa fa-circle-o"></i> Modals</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent === 'forms'}">
         <a href="#">
           <i class="fa fa-edit"></i> <span>Forms</span>
           <span class="pull-right-container">
@@ -103,12 +103,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a ui-sref="main.forms.general"><i class="fa fa-circle-o"></i> General Elements</a></li>
-          <li><a ui-sref="main.forms.advanced"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-          <li><a ui-sref="main.forms.editors"><i class="fa fa-circle-o"></i> Editors</a></li>
+          <li ng-class="{active: indexCtrl.subject==='general'}"><a ui-sref="main.forms.general"><i class="fa fa-circle-o"></i> General Elements</a></li>
+          <li ng-class="{active: indexCtrl.subject==='advanced'}"><a ui-sref="main.forms.advanced"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
+          <li ng-class="{active: indexCtrl.subject==='editors'}"><a ui-sref="main.forms.editors"><i class="fa fa-circle-o"></i> Editors</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent === 'table'}">
         <a href="#">
           <i class="fa fa-table"></i> <span>Tables</span>
           <span class="pull-right-container">
@@ -116,8 +116,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a ui-sref="main.table.data"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-          <li><a ui-sref="main.table.simple"><i class="fa fa-circle-o"></i> Data tables</a></li>
+          <li ng-class="{active: indexCtrl.subject==='data'}"><a ui-sref="main.table.data"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+          <li ng-class="{active: indexCtrl.subject==='simple'}"><a ui-sref="main.table.simple"><i class="fa fa-circle-o"></i> Data tables</a></li>
         </ul>
       </li>
       <li>
@@ -129,7 +129,7 @@
           </span>
         </a>
       </li>
-      <li class="treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent === 'mailbox'}">
         <a ui-sref="main.mailbox.inbox">
           <i class="fa fa-envelope"></i> <span>Mailbox</span>
           <span class="pull-right-container">
@@ -137,18 +137,18 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li>
+          <li ng-class="{active: indexCtrl.subject==='inbox'}">
             <a ui-sref="main.mailbox.inbox">Inbox
               <span class="pull-right-container">
                 <span class="label label-primary pull-right">13</span>
               </span>
             </a>
           </li>
-          <li><a ui-sref="main.mailbox.compose">Compose</a></li>
-          <li><a ui-sref="main.mailbox.read">Read</a></li>
+          <li ng-class="{active: indexCtrl.subject==='compose'}"><a ui-sref="main.mailbox.compose">Compose</a></li>
+          <li ng-class="{active: indexCtrl.subject==='read'}"><a ui-sref="main.mailbox.read">Read</a></li>
         </ul>
       </li>
-      <li class="treeview">
+      <li class="treeview" ng-class="{active: indexCtrl.parent === 'example'}">
         <a href="#">
           <i class="fa fa-folder"></i> <span>Examples</span>
           <span class="pull-right-container">
@@ -156,17 +156,17 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a ui-sref="main.example.invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
-          <li><a ui-sref="main.example.profile"><i class="fa fa-circle-o"></i> Profile</a></li>
+          <li ng-class="{active: indexCtrl.subject==='invoice'}"><a ui-sref="main.example.invoice"><i class="fa fa-circle-o"></i> Invoice</a></li>
+          <li ng-class="{active: indexCtrl.subject==='profile'}"><a ui-sref="main.example.profile"><i class="fa fa-circle-o"></i> Profile</a></li>
           <!--
           <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
           <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
           <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
           -->
-          <li><a ui-sref="main.example.404"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-          <li><a ui-sref="main.example.500"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-          <li><a ui-sref="main.example.blank"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-          <li><a ui-sref="main.example.pace"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+          <li ng-class="{active: indexCtrl.subject==='404'}"><a ui-sref="main.example.404"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+          <li ng-class="{active: indexCtrl.subject==='500'}"><a ui-sref="main.example.500"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+          <li ng-class="{active: indexCtrl.subject==='blank'}"><a ui-sref="main.example.blank"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+          <li ng-class="{active: indexCtrl.subject==='pace'}"><a ui-sref="main.example.pace"><i class="fa fa-circle-o"></i> Pace Page</a></li>
         </ul>
       </li>
       <!--
