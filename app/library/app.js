@@ -115,10 +115,24 @@ define('app', [
       );
     };
   }])
-  .controller('IndexController', ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
+  .factory('appCookie', function() {
+    return function() {
+      token: ''
+    };
+  })
+  .controller('IndexController', ['$scope', '$rootScope', '$state', 'appCookie', function ($scope, $rootScope, $state, appCookie) {
     var self = this;
     self.parent = '';
     self.subject = '';
+    self.toLogin = function() {
+      $state.go('main.auth.login', {});
+    };
+
+    self.logout = function() {
+      appCookie.token = '';
+      self.toLogin();
+    };
+
     $rootScope.$on('$stateChangeStart',
       function (event, toState, toParams, fromState, fromParams){
         var name = toState.name;
@@ -132,12 +146,19 @@ define('app', [
           self.parent = 'dashboard';
           self.subject = 'v1';
         }
+
+        // Check wether login
         if (name !== 'main.auth.login') {
-          event.preventDefault();
-          $state.go('main.auth.login', {});
+          var token = appCookie.token;
+          if (!token) {
+            event.preventDefault();
+            self.toLogin();
+          }
         }
       }, $scope
     );
+
+
   }]);
 
   return app;
