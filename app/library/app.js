@@ -120,7 +120,8 @@ define('app', [
       token: ''
     };
   })
-  .controller('IndexController', ['$scope', '$rootScope', '$state', 'appCookie', function ($scope, $rootScope, $state, appCookie) {
+  .controller('IndexController', [
+    '$scope', '$rootScope', '$state', 'appCookie', 'breadcrumb', function ($scope, $rootScope, $state, appCookie, breadcrumb) {
     var self = this;
     self.parent = '';
     self.subject = '';
@@ -132,6 +133,22 @@ define('app', [
       appCookie.token = '';
       self.toLogin();
     };
+
+    self.linkto = function(link) {
+      $state.go(link);
+    };
+
+    // self.breadcrumbs = {
+    //   title: 'Calendar',
+    //   subTitle: 'Control panel',
+    //   list: [
+    //     {
+    //       name: 'Dashboard',
+    //       link: 'main.dashboar.v1'
+    //     }
+    //   ]
+    // };
+    self.breadcrumb = breadcrumb;
 
     $rootScope.$on('$stateChangeStart',
       function (event, toState, toParams, fromState, fromParams){

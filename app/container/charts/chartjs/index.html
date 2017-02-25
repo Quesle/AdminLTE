@@ -1,56 +1,39 @@
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        ChartJS
-        <small>Preview sample</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Charts</a></li>
-        <li class="active">ChartJS</li>
-      </ol>
-    </section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- AREA CHART -->
+      <box type="primary" title="Area Chart" support-collapse="true" support-remove="true">
+        <canvas id="areaChart" style="height:250px"></canvas>
+      </box>
+      <!-- /.box -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-md-6">
-          <!-- AREA CHART -->
-          <box type="primary" title="Area Chart" support-collapse="true" support-remove="true">
-            <canvas id="areaChart" style="height:250px"></canvas>
-          </box>
-          <!-- /.box -->
+      <!-- DONUT CHART -->
+      <box type="danger" title="Donut Chart" support-collapse="true" support-remove="true">
+        <canvas id="pieChart" style="height:250px"></canvas>
+      </box>
+      <!-- /.box -->
 
-          <!-- DONUT CHART -->
-          <box type="danger" title="Donut Chart" support-collapse="true" support-remove="true">
-            <canvas id="pieChart" style="height:250px"></canvas>
-          </box>
-          <!-- /.box -->
+    </div>
+    <!-- /.col (LEFT) -->
+    <div class="col-md-6">
+      <!-- LINE CHART -->
+      <box type="info" title="Line Chart" support-collapse="true" support-remove="true">
+        <canvas id="lineChart" style="height:250px"></canvas>
+      </box>
+      <!-- /.box -->
 
-        </div>
-        <!-- /.col (LEFT) -->
-        <div class="col-md-6">
-          <!-- LINE CHART -->
-          <box type="info" title="Line Chart" support-collapse="true" support-remove="true">
-            <canvas id="lineChart" style="height:250px"></canvas>
-          </box>
-          <!-- /.box -->
+      <!-- BAR CHART -->
+      <box type="success" title="Bar Chart" support-collapse="true" support-remove="true">
+        <canvas id="barChart" style="height:230px"></canvas>
+      </box>
+      <!-- /.box -->
 
-          <!-- BAR CHART -->
-          <box type="success" title="Bar Chart" support-collapse="true" support-remove="true">
-            <canvas id="barChart" style="height:230px"></canvas>
-          </box>
-          <!-- /.box -->
-
-        </div>
-        <!-- /.col (RIGHT) -->
-      </div>
-      <!-- /.row -->
-
-    </section>
-    <!-- /.content -->
+    </div>
+    <!-- /.col (RIGHT) -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.row -->
+
+</section>
+<!-- /.content -->
