@@ -26,7 +26,8 @@ define('app', [
   var app = angular.module('ngApp',[
     'oc.lazyLoad',
     'ui.router',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ngCookies'
   ]);
 
   app.service('breadcrumb', function () {
@@ -107,22 +108,25 @@ define('app', [
       ]
     });
   }])
-  .factory('breadcrumb', ['$rootScope', function($rootScope) {
-    return function(subTitle, breadcrumbs) {
-      $rootScope.$broadcast(
-        'onBreadcrumb',
-        {subTitle: subTitle, breadcrumbs: breadcrumbs}
-      );
-    };
-  }])
   .factory('appCookie', function() {
     return function() {
       token: ''
     };
   })
+  .service('config', function() {
+    return {
+      hasLogin: false,
+      setLogin: function(bool) {
+        this.hasLogin = bool;
+      }
+    };
+  })
   .controller('IndexController', [
-    '$scope', '$rootScope', '$state', 'appCookie', 'breadcrumb', function ($scope, $rootScope, $state, appCookie, breadcrumb) {
+    '$scope', '$rootScope', '$state', '$cookieStore', 'config', 'breadcrumb', 
+    function ($scope, $rootScope, $state, $cookieStore, config, breadcrumb) 
+  {
     var self = this;
+    self.hasLogin = config.hasLogin;
     self.parent = '';
     self.subject = '';
     self.toLogin = function() {
@@ -130,25 +134,19 @@ define('app', [
     };
 
     self.logout = function() {
-      appCookie.token = '';
+      $cookieStore.remove('access_token');      
       self.toLogin();
     };
 
     self.linkto = function(link) {
       $state.go(link);
     };
-
-    // self.breadcrumbs = {
-    //   title: 'Calendar',
-    //   subTitle: 'Control panel',
-    //   list: [
-    //     {
-    //       name: 'Dashboard',
-    //       link: 'main.dashboar.v1'
-    //     }
-    //   ]
-    // };
     self.breadcrumb = breadcrumb;
+
+    self.unAuthPaths = [
+      'main.auth.login',
+      'main.auth.register'
+    ];
 
     $rootScope.$on('$stateChangeStart',
       function (event, toState, toParams, fromState, fromParams){
@@ -165,8 +163,8 @@ define('app', [
         }
 
         // Check wether login
-        if (name !== 'main.auth.login') {
-          var token = appCookie.token;
+        if (self.unAuthPaths.indexOf(name) < 0) {
+          var token = $cookieStore.get('access_token');
           if (!token) {
             event.preventDefault();
             self.toLogin();

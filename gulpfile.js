@@ -23,13 +23,22 @@ function minJs(filename, dir, files) {
     .pipe(gulp.dest(dir));
 }
 
-var mainJs = [
-  'app/library/domReady.js',
-  'app/library/bootstrap.js',
-  'app/library/app.js',
-  'app/library/ngRoute.js',
-  'app/library/main.js'
-];
+var files = {
+  mainJs: [
+    'app/library/domReady.js',
+    'app/library/bootstrap.js',
+    'app/library/app.js',
+    'app/library/ngRoute.js',
+    'app/library/main.js'
+  ],
+  angular: [
+    'bower_components/angular/angular.min.js',
+    'bower_components/angular-cookies/angular-cookies.min.js',
+    'bower_components/angular-translate/angular-translate.min.js',
+    'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+    'bower_components/oclazyload/dist/ocLazyLoad.require.min.js'
+  ]
+}
 
 var frameworks = [
   'app/framework/**/*.js'
@@ -39,9 +48,13 @@ var require = [
   'bower_components/requirejs/require.js'
 ];
 
+gulp.task('angular', function() {
+  return minJs('angular.lib.min.js', 'app/dist/lib', files.angular);
+});
+
 /* Get main.min.js for require.js data-main */
 gulp.task('require-main', function() {
-  return minJs('main.min.js', 'app', mainJs);
+  return minJs('main.min.js', 'app', files.mainJs);
 });
 
 gulp.task('require', function() {
@@ -53,7 +66,7 @@ gulp.task('framework', function() {
 });
 
 gulp.task('watch-require-main', function() {
-  gulp.watch(mainJs, [ 'require-main' ]);
+  gulp.watch(files.mainJs, [ 'require-main' ]);
 });
 
 gulp.task('watch-framework', function() {

@@ -2,7 +2,7 @@
 require.config({
   baseUrl: '',
   paths:{
-    'angular-package': 'dist/lib/lib.angular.min',
+    'angular-package': 'dist/lib/angular.lib.min',
     // 'domReady': '../bower_components/domReady/domReady',
     'simplex-markdown': 'simplex/markdown',
     'simplex-ui-codemirror': 'simplex/ui-codemirror',

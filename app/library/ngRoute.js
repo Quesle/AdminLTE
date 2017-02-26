@@ -95,7 +95,8 @@ define('ngRoute', ['app'], function (app) {
   ];
 
   var authRouter = [
-    getRouter([ 'auth', 'login' ], 'login', 'Login')
+    getRouter([ 'auth', 'login' ], 'login', 'Login'),
+    getRouter([ 'auth', 'register' ], 'register', 'Register')
   ];
 
   var routes = [
